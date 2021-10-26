@@ -4,24 +4,24 @@
 
     <DataBoxes :stats="stats" />
 
-    <CountrySelect @get-country="getCountryData" :countries="countries" />
+    <CountrySelect
+      @get-country="getCountryData"
+      @get-global="clearCountryData"
+      :countries="countries"
+    />
 
-    <button
-      v-if="stats.Country"
-      @click="clearCountryData()"
-      @changeToGlobal="clearCountryData"
-      class="
-        bg-blue-700
-        text-white
-        rounded
-        p-3
-        mt-10
-        focus:outline-none
-        hover:bg-blue-400
-      "
-    >
-      Clear Country
-    </button>
+    <div class="flex flex-col justify-center text-center align-bottom">
+      <p
+        class="
+          text-gray-400 text-sm
+          my-10
+          hover:text-gray-500
+          duration-150
+        "
+      >
+        made by linus
+      </p>
+    </div>
   </main>
 
   <main class="flex flex-col align-center justify-center text-center" v-else>
@@ -58,16 +58,15 @@ export default {
       const data = await res.json();
       return data;
     },
-    getCountryData(country) {
+    async getCountryData(country) {
+      const data = await this.fetchCovidData();
       this.stats = country;
       this.title = country.Country;
     },
     async clearCountryData() {
-      this.loading = true;
       const data = await this.fetchCovidData();
       this.title = "Global";
       this.stats = data.Global;
-      this.loading = false;
     },
   },
   async created() {
