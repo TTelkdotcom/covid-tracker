@@ -1,19 +1,3 @@
-# covid-tracker
+# This is a simple covid tracker
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Feel free to use this project as a basis, but please make sure to include a link to this repository. Thx!
